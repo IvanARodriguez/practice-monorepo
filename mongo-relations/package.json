@@ -1,0 +1,16 @@
+{
+  "name": "mongo-relations",
+  "version": "1.0.0",
+  "description": "Practice Mongo db relationships",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan R.",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.3"
+  }
+}
