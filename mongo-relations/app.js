@@ -1,7 +1,6 @@
 import express from 'express';
 import 'dotenv/config';
 import mongoose from 'mongoose';
-import { addAddress, makeUser } from './Models/user.js';
 
 const { PORT = 6000 } = process.env;
 
@@ -17,10 +16,6 @@ await mongoose
 		console.log('Database connected!');
 	})
 	.catch((e) => console.log(`Something bad happened!, ${e}`));
-
-const newUser = await makeUser()
-
-const updatedUser = await addAddress(newUser.id)
 
 const router = express.Router();
 
