@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: development
+      BUNDLE_WITHOUT: production
+    ports:
+      - "8800:8800"
+    volumes:
+      - .:/rails
+    entrypoint: "/rails/bin/docker-dev-entrypoint"
+
