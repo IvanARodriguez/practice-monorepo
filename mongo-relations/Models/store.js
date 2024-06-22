@@ -38,11 +38,7 @@ async function createProducts() {
 const storeSchema = mongoose.Schema({
 	name: { type: String, required: true, unique: true },
 	location: { type: String, required: true },
-	products: [
-		{
-			productId: { type: Schema.Types.ObjectId, ref: 'Product' },
-		},
-	],
+	products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 });
 
 const Store = mongoose.model('Store', storeSchema);
@@ -57,14 +53,23 @@ async function createStore() {
 
 	newStore.products.push(hassAvocado);
 
-	await newStore.save()
+	await newStore.save();
+}
 
-	console.log(newStore)
+async function addProduct() {
+	const store = await Store.findOne({ name: 'Bravo Supermarket' });
+	const banana = await Product.findOne({ name: 'Banana' });
+	if (store && banana) {
+		store.products.push(banana);
+		await store.save();
+	}
 }
 
 await createProducts();
 await createStore();
-
-console.log(await Store.find({}));
+await addProduct();
+await Store.findOne({ name: 'Bravo Supermarket' })
+	.populate('products')
+	.then((store) => console.log(store));
 
 await mongoose.disconnect();
