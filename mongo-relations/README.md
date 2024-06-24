@@ -25,8 +25,6 @@ This application is meant to start with a monolith approach, which means that a 
 
 This application is built with Node.js, Express.js and uses EJS as the view engine
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## Getting Started
