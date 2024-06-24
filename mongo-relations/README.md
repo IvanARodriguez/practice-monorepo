@@ -38,7 +38,7 @@ Open a git terminal which uses bash
 - Navigate to server
 
   ```sh
-  cd server
+  cd mongo-relations
   touch .env
   ```
 
