@@ -1,7 +1,51 @@
-<!doctype html>
-<html lang="en">
-	<%- include('./partials/head'); %>
-	<body>
-		<h1>Create Product</h1>
-	</body>
-</html>
+<%layout('/partials/boilerplate')%>
+<div class="app-style">
+	<%- include('../partials/sidebar') %>
+	<section class="create-form">
+		<form action="/cars" method="POST" novalidate>
+			<div class="form-control">
+				<label for="make">Marca</label>
+				<input
+					required
+					type="text"
+					id="make"
+					name="car[make]"
+					placeholder="Toyota"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="model">Modelo</label>
+				<input
+					required
+					type="text"
+					id="model"
+					name="car[model]"
+					placeholder="Corolla"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="year">Año</label>
+				<input
+					required
+					type="number"
+					value="2024"
+					id="year"
+					name="car[year]"
+					placeholder="2023"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="price">Precio</label>
+				<input
+					required
+					type="number"
+					value="200"
+					id="price"
+					name="car[price]"
+					placeholder="200"
+				/>
+			</div>
+			<button type="submit" class="submit-btn">Crear</button>
+		</form>
+	</section>
+</div>

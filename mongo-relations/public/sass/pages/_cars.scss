@@ -1,0 +1,33 @@
+@use '../variables';
+
+.create-form {
+	flex: 1;
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	form {
+		width: 100%;
+		max-width: 400px;
+		margin: 2rem auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		.form-control {
+			width: 100%;
+			display: grid;
+			input {
+				border-top: none;
+				border-left: none;
+				border-right: none;
+				font-size: 1.3rem;
+				&:focus {
+					outline: none;
+					border-bottom: 2px solid variables.$blue;
+				}
+			}
+		}
+	}
+}

@@ -1,2 +1,42 @@
 @use './variables';
 @use './reset';
+@use './mixing';
+@use './components/navbar';
+@use './components/sidebar';
+@use './pages/home';
+@use './pages/cars';
+
+h1 {
+	@include mixing.device(xl) {
+		font-size: variables.$size-3;
+	}
+	@include mixing.device(md) {
+		font-size: variables.$size-2;
+	}
+	@include mixing.device(sm) {
+		font-size: variables.$size-1;
+	}
+}
+
+main {
+	flex: 1;
+	display: grid;
+}
+
+.submit-btn {
+	background-color: variables.$blue;
+	color: white;
+	cursor: pointer;
+	width: 100%;
+	padding: 0.2rem 1rem;
+	border-radius: 0.2rem;
+	border: none;
+	transition: opacity 0.2s ease-in-out;
+	font-size: 1.2rem;
+	&:focus {
+		outline: none;
+	}
+	&:hover {
+		opacity: 0.8;
+	}
+}

@@ -1,9 +1,9 @@
 <div align="center">
 
-  <h3 align="center">Rent-A-Car Application</h3>
+  <h1 align="center">Rent-A-Car Application</h1>
 
   <p align="center">
-   Rent and manage Cars you have for rent
+   An application to manage car for rent and offer car renting services
   </p>
 </div>
 

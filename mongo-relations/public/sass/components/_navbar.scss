@@ -1,0 +1,25 @@
+@use '../variables';
+
+header {
+	.nav {
+		min-width: 62.69px;
+		padding: 0.5rem 1rem;
+		background-color: variables.$blue;
+		display: flex;
+		gap: 1rem;
+		justify-content: space-between;
+		color: white;
+		.logo {
+			padding: 0.3rem 0.5rem;
+			border-radius: 0.2rem;
+			background-color: variables.$dark-color;
+		}
+		.menu {
+			display: flex;
+			li {
+				display: grid;
+				align-items: center;
+			}
+		}
+	}
+}

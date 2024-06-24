@@ -1,3 +1,3 @@
-import * as Car from './car.js'
+import * as Car from './Car.js'
 
 export { Car }

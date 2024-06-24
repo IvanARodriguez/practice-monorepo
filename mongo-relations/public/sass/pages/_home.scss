@@ -1,0 +1,14 @@
+.banner {
+	max-width: 1024px;
+	margin: 3rem auto;
+	text-align: center;
+	display: grid;
+	gap: 0.5rem;
+	h2 {
+		font-weight: 600;
+		color: gray;
+	}
+	img {
+		width: 100%;
+	}
+}

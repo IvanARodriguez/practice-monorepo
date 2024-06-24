@@ -2,4 +2,21 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-weight: normal;
+	font-family: jost, sans-serif, Helvetica, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+li {
+	list-style: none;
 }

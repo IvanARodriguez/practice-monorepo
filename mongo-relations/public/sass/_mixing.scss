@@ -1,0 +1,22 @@
+@mixin device($breakpoint) {
+	@if ($breakpoint == xl) {
+		@media screen and (max-width: 1800px) {
+			@content;
+		}
+	}
+	@if ($breakpoint == lg) {
+		@media screen and (max-width: 1024px) {
+			@content;
+		}
+	}
+	@if ($breakpoint == md) {
+		@media screen and (max-width: 900px) {
+			@content;
+		}
+	}
+	@if ($breakpoint == sm) {
+		@media screen and (max-width: 600px) {
+			@content;
+		}
+	}
+}
