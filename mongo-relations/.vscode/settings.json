@@ -1,0 +1,10 @@
+{
+	"javascript.format.insertSpaceAfterCommaDelimiter": true,
+	"editor.formatOnSave": true,
+	"prettier.semi": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"cSpell.words": ["healthcheck", "tailwindcss"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	}
+}
