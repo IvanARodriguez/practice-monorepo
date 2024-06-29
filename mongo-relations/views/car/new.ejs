@@ -1,8 +1,13 @@
 <%layout('/partials/boilerplate')%>
 <div class="app-style">
-	<%- include('../partials/sidebar') %>
+	<aside class="sidebar">
+		<ul>
+			<li><a href="/cars">CAR SHOW</a></li>
+			<li class="selected-link"><a href="/cars/new">CREAR</a></li>
+		</ul>
+	</aside>
 	<section class="create-form">
-		<form action="/cars" method="POST" novalidate>
+		<form action="/cars" method="POST">
 			<div class="form-control">
 				<label for="make">Marca</label>
 				<input
@@ -35,6 +40,17 @@
 				/>
 			</div>
 			<div class="form-control">
+				<label for="VIM">Numero de chasis</label>
+				<input
+					required
+					type="text"
+					id="VIM"
+					minlength="17"
+					name="car[vim]"
+					placeholder="4Y1SL65848Z411439"
+				/>
+			</div>
+			<div class="form-control">
 				<label for="price">Precio</label>
 				<input
 					required
@@ -47,5 +63,6 @@
 			</div>
 			<button type="submit" class="submit-btn">Crear</button>
 		</form>
+		<img src="/imgs/car-ilustration.svg" alt="Car illustration" />
 	</section>
 </div>

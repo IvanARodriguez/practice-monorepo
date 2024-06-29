@@ -1,5 +1,17 @@
 <%layout('/partials/boilerplate')%>
 <div class="app-style">
-	<%- include('../partials/sidebar') %>
-	<div class="content"></div>
+	<aside class="sidebar">
+		<ul>
+			<li class="selected-link"><a href="/cars">CAR SHOW</a></li>
+			<li><a href="/cars/new">CREAR</a></li>
+		</ul>
+	</aside>
+	<div class="content">
+		<% cars.forEach(car => { %>
+		<a href="<%= `/cars/${car._id}` %>" class="car-card">
+			<h2><%=car.make %> <%=car.model %> <%=car.year %></h2>
+			<p><%= car.vim ?? 'Chasis no identificado'%></p>
+		</a>
+		<% }) %>
+	</div>
 </div>

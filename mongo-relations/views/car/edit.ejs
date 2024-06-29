@@ -1,8 +1,72 @@
 <%layout('/partials/boilerplate')%>
-<main class="main-cars">
+<div class="app-style">
 	<aside class="sidebar">
 		<ul>
-			<li><a href="/cars/new">CREATE</a></li>
+			<li><a href="/cars">CAR SHOW</a></li>
+			<li><a href="/cars/new">CREAR</a></li>
 		</ul>
 	</aside>
-</main>
+	<section class="create-form">
+		<form action="/cars?_method=PUT" method="POST">
+			<div class="form-control">
+				<label for="make">Marca</label>
+				<input
+					required
+					type="text"
+					id="make"
+					value="<%=car.make%>"
+					name="car[make]"
+					placeholder="Toyota"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="model">Modelo</label>
+				<input
+					required
+					value="<%=car.model%>"
+					type="text"
+					id="model"
+					name="car[model]"
+					placeholder="Corolla"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="year">Año</label>
+				<input
+					value="<%=car.year%>"
+					required
+					type="number"
+					value="2024"
+					id="year"
+					name="car[year]"
+					placeholder="2023"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="vim">Año</label>
+				<input
+					value="<%=car.vim%>"
+					required
+					type="text"
+					id="vim"
+					name="car[vim]"
+					placeholder="4Y1SL65848Z411439"
+				/>
+			</div>
+			<div class="form-control">
+				<label for="price">Precio</label>
+				<input
+					required
+					value="<%=car.price%>"
+					type="number"
+					value="200"
+					id="price"
+					name="car[price]"
+					placeholder="200"
+				/>
+			</div>
+			<button type="submit" class="submit-btn">Crear</button>
+		</form>
+		<img src="/imgs/car-ilustration.svg" alt="Car illustration" />
+	</section>
+</div>
