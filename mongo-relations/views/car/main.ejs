@@ -1,16 +1,16 @@
 <%layout('/partials/boilerplate')%>
 <div class="app-style">
-	<aside class="sidebar">
-		<ul>
-			<li class="selected-link"><a href="/cars">CAR SHOW</a></li>
-			<li><a href="/cars/new">CREAR</a></li>
-		</ul>
-	</aside>
-	<div class="content">
+	<%- include('../partials/sidebar', { selectedLink: 'cars' }) %>
+	<div class="cars">
 		<% cars.forEach(car => { %>
 		<a href="<%= `/cars/${car._id}` %>" class="car-card">
-			<h2><%=car.make %> <%=car.model %> <%=car.year %></h2>
-			<p><%= car.vim ?? 'Chasis no identificado'%></p>
+			<img src=<%= car.photos.length === 0 ? "https://placehold.co/400x190" :
+			car.images[0]%> alt="<%=car.make %> <%=car.model %> <%=car.year %>
+			placeholder" />
+			<div class="card-body">
+				<h2><%=car.make %> <%=car.model %> <%=car.year %></h2>
+				<p><%= car.vim ?? 'Chasis no identificado'%></p>
+			</div>
 		</a>
 		<% }) %>
 	</div>

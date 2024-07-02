@@ -1,11 +1,6 @@
 <%layout('/partials/boilerplate')%>
 <div class="app-style">
-	<aside class="sidebar">
-		<ul>
-			<li><a href="/cars">CAR SHOW</a></li>
-			<li class="selected-link"><a href="/cars/new">CREAR</a></li>
-		</ul>
-	</aside>
+	<%- include('../partials/sidebar', { selectedLink: 'new' }) %>
 	<section class="create-form">
 		<form action="/cars" method="POST">
 			<div class="form-control">

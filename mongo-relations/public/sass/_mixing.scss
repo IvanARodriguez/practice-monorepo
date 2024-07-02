@@ -1,6 +1,6 @@
 @mixin device($breakpoint) {
 	@if ($breakpoint == xl) {
-		@media screen and (max-width: 1800px) {
+		@media screen and (min-width: 1800px) {
 			@content;
 		}
 	}

@@ -1,19 +1,7 @@
 <%layout('/partials/boilerplate')%>
 <div class="app-style">
-	<aside class="sidebar">
-		<ul>
-			<li class="selected-link"><a href="/cars">CAR SHOW</a></li>
-			<li><a href="/cars/new">CREAR</a></li>
-		</ul>
-	</aside>
+	<%- include('../partials/sidebar', { selectedLink: 'cars' }) %>
 	<div class="content">
-		<div class="images">
-			<img src="https://placehold.co/200x200" alt="Car image 1" />
-			<img src="https://placehold.co/200x200" alt="Car image 2" />
-			<img src="https://placehold.co/200x200" alt="Car image 3" />
-			<img src="https://placehold.co/200x200" alt="Car image 4" />
-			<img src="https://placehold.co/200x200" alt="Car image 5" />
-		</div>
 		<h1><%= car.make %> <%= car.model %> <%= car.year %></h1>
 		<h2><%= car.price %> por dia</h2>
 		<p>Chasis: <%=car.vim ?? 'No definido'%></p>
