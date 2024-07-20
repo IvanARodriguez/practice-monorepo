@@ -106,12 +106,35 @@
 				gap: 1rem;
 			}
 		}
-		.review {
-			border: none;
-			background-color: rgba(122, 114, 114, 0.13);
+		.review-form {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.review-text-input {
+			border: 1px solid rgba(128, 128, 128, 0.48);
 			width: 100%;
 			border-radius: 0.5rem;
 			padding: 0.5rem;
+			&:focus {
+				outline: none !important;
+				box-shadow: 0 0 10px #719ece;
+			}
+		}
+
+		.reviews {
+			border: none;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			width: 100%;
+			border-radius: 0.5rem;
+			.review-card {
+				display: flex;
+				flex-direction: column;
+				padding: 1rem 0.5rem;
+				box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.251);
+			}
 		}
 	}
 }

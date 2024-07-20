@@ -11,6 +11,7 @@ const carSchema = Schema({
 		unique: [true, 'Numero de chasis debe ser único'],
 	},
 	photos: [{ type: String }],
+	reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 })
 
-export default model('Product', carSchema)
+export default model('Car', carSchema)

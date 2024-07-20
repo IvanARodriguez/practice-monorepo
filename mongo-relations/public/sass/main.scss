@@ -5,6 +5,7 @@
 @use './components/sidebar';
 @use './components/common';
 @use './components/buttons';
+@use './components/rating';
 @use './pages/home';
 @use './pages/cars';
 
@@ -18,6 +19,12 @@ h1 {
 	@include mixing.device(sm) {
 		font-size: variables.$size-1;
 	}
+}
+
+input:focus {
+	outline: none !important;
+	border: 1px solid red !important;
+	box-shadow: 0 0 10px #719ece !important;
 }
 
 main {

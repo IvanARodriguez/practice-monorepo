@@ -9,6 +9,13 @@
 				car.images[0]%> alt="<%=car.make %> <%=car.model %> <%=car.year %>
 				placeholder" />
 				<h2><%= car.price %> por dia</h2>
+				<div class="stars">
+					<p>
+						Rating: <% for (let i = 1; i <= averageRating; i++) { %>
+						<span class="star">⭐</span>
+						<% } %> (<%=averageRating%>)
+					</p>
+				</div>
 				<p>Chasis: <%=car.vim ?? 'No definido'%></p>
 				<div class="btns">
 					<form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
@@ -21,18 +28,55 @@
 			</div>
 			<div class="reviews">
 				<h3>Reseñas</h3>
-				<form action="/review" method="post">
+				<form
+					class="review-form"
+					action="/cars/<%=car._id%>/reviews/add"
+					method="POST"
+				>
 					<textarea
-						class="review"
-						name="text"
+						class="review-text-input"
+						name="review[text]"
 						id="text"
 						maxlength="500"
 						rows="7"
 						placeholder="Inserte reseña de 500 caracteres o menos"
 						required
 					></textarea>
+					<span class="star-rating">
+						<input
+							type="radio"
+							name="review[rating]"
+							value="1"
+							required="required"
+						/><i></i>
+						<input type="radio" name="review[rating]" value="2" /><i></i>
+						<input type="radio" name="review[rating]" value="3" /><i></i>
+						<input type="radio" name="review[rating]" value="4" /><i></i>
+						<input type="radio" name="review[rating]" value="5" /><i></i>
+					</span>
 					<button class="btn btn-primary withPadding">Guardar</button>
 				</form>
+				<% if (reviews.length > 0) { %> <% reviews.forEach(review => { %>
+				<div class="review-card">
+					<p class="review-date"><%=review.date%></p>
+					<div class="stars">
+						<% for (let i = 1; i <= review.rating; i++) { %>
+						<span class="star">⭐</span>
+						<% } %>
+					</div>
+					<p><%= review.text%></p>
+					<form
+						action="/cars/<%=car._id%>/reviews/<%=review._id%>?_method=DELETE"
+						method="POST"
+					>
+						<button class="btn text danger">
+							<img src="/imgs/trash.svg" alt="delete icon" />
+						</button>
+					</form>
+				</div>
+				<% }) %> <% } else { %>
+				<p>No reviews yet.</p>
+				<% } %>
 			</div>
 		</div>
 	</div>
