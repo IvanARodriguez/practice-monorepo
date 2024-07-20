@@ -1,0 +1,24 @@
+@use '../variables';
+.btn {
+	border: none;
+	font-size: large;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	&.btn-primary {
+		background-color: variables.$blue;
+		color: white;
+	}
+	&.withPadding {
+		padding: 0.5rem 1rem;
+	}
+	&.text {
+		background-color: transparent;
+		color: rgb(24, 52, 207);
+		&.danger {
+			color: red;
+		}
+		&.warning {
+			color: rgb(255, 191, 0);
+		}
+	}
+}

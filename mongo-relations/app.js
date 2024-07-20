@@ -10,6 +10,7 @@ import session from 'cookie-session'
 import bodyParser from 'body-parser'
 import { logger, httpLogger } from './helpers/logger.js'
 import helmet from 'helmet'
+import methodOverride from 'method-override'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,6 +18,7 @@ const PORT = process.env.PORT ?? 6000
 const DB_URI = process.env.DB_URI ?? 'mongodb://127.0.0.1:27017/RentACar'
 
 const app = express()
+app.use(methodOverride('_method'))
 
 // Configure Custom HTTP Logger
 app.use(httpLogger)

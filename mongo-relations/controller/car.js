@@ -19,6 +19,11 @@ async function renderCarShowPage(req, res) {
 		car: { ...car.toObject(), price: convertCurrency(car.price) },
 	})
 }
+async function deleteCar(req, res) {
+	const { id } = req.params
+	await Car.findByIdAndDelete(id)
+	res.redirect('/cars')
+}
 async function renderCarEditPage(req, res) {
 	const { id } = req.params
 	const car = await Car.findById(id)
@@ -31,12 +36,22 @@ async function createCar(req, res) {
 	res.redirect(`/cars/${newCar._id}`)
 }
 
+async function updateCar(req, res) {
+	const car = await Car.findByIdAndUpdate(id, {
+		...req.body.car,
+	})
+
+	res.redirect(`/cars/${car._id}`)
+}
+
 const carRoutes = Router()
 
+carRoutes.get('/new', renderCreateCarPage)
 carRoutes.get('/', catchAsyncError(getCars))
 carRoutes.post('/', catchAsyncError(createCar))
-carRoutes.get('/new', renderCreateCarPage)
-carRoutes.get('/edit/:id', catchAsyncError(renderCarEditPage))
+carRoutes.put('/:id', catchAsyncError(updateCar))
+carRoutes.delete('/:id', catchAsyncError(deleteCar))
 carRoutes.get('/:id', catchAsyncError(renderCarShowPage))
+carRoutes.get('/:id/edit', catchAsyncError(renderCarEditPage))
 
 export default carRoutes

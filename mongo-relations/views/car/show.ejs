@@ -2,8 +2,38 @@
 <div class="app-style">
 	<%- include('../partials/sidebar', { selectedLink: 'cars' }) %>
 	<div class="content">
-		<h1><%= car.make %> <%= car.model %> <%= car.year %></h1>
-		<h2><%= car.price %> por dia</h2>
-		<p>Chasis: <%=car.vim ?? 'No definido'%></p>
+		<div class="car-show">
+			<div class="card">
+				<h1><%= car.make %> <%= car.model %> <%= car.year %></h1>
+				<img src=<%= car.photos.length === 0 ? "https://placehold.co/400x190" :
+				car.images[0]%> alt="<%=car.make %> <%=car.model %> <%=car.year %>
+				placeholder" />
+				<h2><%= car.price %> por dia</h2>
+				<p>Chasis: <%=car.vim ?? 'No definido'%></p>
+				<div class="btns">
+					<form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+						<button class="btn text danger" type="submit">Eliminar</button>
+					</form>
+					<a class="btn text warning" href="/cars/<%= car._id %>/edit"
+						>Editar</a
+					>
+				</div>
+			</div>
+			<div class="reviews">
+				<h3>Reseñas</h3>
+				<form action="/review" method="post">
+					<textarea
+						class="review"
+						name="text"
+						id="text"
+						maxlength="500"
+						rows="7"
+						placeholder="Inserte reseña de 500 caracteres o menos"
+						required
+					></textarea>
+					<button class="btn btn-primary withPadding">Guardar</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
