@@ -14,7 +14,9 @@ function getAvgRating(numbers) {
 
 async function getCars(req, res) {
 	const cars = await Car.find()
-	res.render('car/main', { cars })
+	const message = req.flash('message')
+	const variant = req.flash('variant')
+	res.render('car/main', { cars, message, variant })
 }
 
 async function renderCreateCarPage(req, res) {
@@ -23,6 +25,8 @@ async function renderCreateCarPage(req, res) {
 
 async function renderCarShowPage(req, res) {
 	const { id } = req.params
+	const message = req.flash('message')
+	const variant = req.flash('variant')
 	const car = await Car.findById(id).populate({
 		path: 'reviews',
 		options: { sort: { date: -1 } },
@@ -40,11 +44,15 @@ async function renderCarShowPage(req, res) {
 		car: { ...car.toObject(), price: convertCurrency(car.price) },
 		reviews,
 		averageRating,
+		message,
+		variant,
 	})
 }
 async function deleteCar(req, res) {
 	const { id } = req.params
 	await Car.findByIdAndDelete(id)
+	req.flash('message', 'Carro eliminado con éxito')
+	req.flash('variant', 'danger')
 	res.redirect('/cars')
 }
 async function renderCarEditPage(req, res) {
@@ -56,6 +64,8 @@ async function renderCarEditPage(req, res) {
 async function createCar(req, res) {
 	const car = await Car(req.body.car)
 	const newCar = await car.save()
+	req.flash('message', 'Carro creado con éxito')
+	req.flash('variant', 'success')
 	res.redirect(`/cars/${newCar._id}`)
 }
 
@@ -64,7 +74,8 @@ async function updateCar(req, res) {
 	const car = await Car.findByIdAndUpdate(id, {
 		...req.body.car,
 	})
-
+	req.flash('message', 'Carro actualizado con éxito')
+	req.flash('variant', 'success')
 	res.redirect(`/cars/${car._id}`)
 }
 
@@ -78,14 +89,15 @@ async function addReviewToCar(req, res) {
 	const fullReview = {
 		...review,
 		date: new Date(),
-		car: car._id,
+		car,
 	}
 
 	const newReview = new Review(fullReview)
 	const savedReview = await newReview.save()
 	car.reviews.push(savedReview._id)
 	await car.save()
-
+	req.flash('message', 'Reseña creada con éxito')
+	req.flash('variant', 'success')
 	res.redirect(`/cars/${car._id}`)
 }
 
@@ -99,6 +111,8 @@ async function deleteReview(req, res) {
 	car.reviews = filteredCarReviews
 	await car.save()
 	await Review.findByIdAndDelete(review_id)
+	req.flash('message', 'Reseña eliminada con éxito')
+	req.flash('variant', 'danger')
 	res.redirect(`/cars/${car._id}`)
 }
 

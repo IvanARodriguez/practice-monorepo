@@ -6,11 +6,13 @@ import { fileURLToPath } from 'url'
 import routes from './controller/routes.js'
 import ErrorHandler from './middlewares/errorHandler.js'
 import ejsMate from 'ejs-mate'
-import session from 'cookie-session'
 import bodyParser from 'body-parser'
 import { logger, httpLogger } from './helpers/logger.js'
 import helmet from 'helmet'
 import methodOverride from 'method-override'
+import flash from 'connect-flash'
+import cookieParser from 'cookie-parser'
+import session from 'express-session'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -19,6 +21,16 @@ const DB_URI = process.env.DB_URI ?? 'mongodb://127.0.0.1:27017/RentACar'
 
 const app = express()
 app.use(methodOverride('_method'))
+app.use(cookieParser('secretStringForCookies'))
+app.use(
+	session({
+		secret: 'secretStringForCookies',
+		cookie: { maxAge: 60000 },
+		resave: true,
+		saveUninitialized: true,
+	})
+)
+app.use(flash())
 
 // Configure Custom HTTP Logger
 app.use(httpLogger)

@@ -49,3 +49,36 @@ main {
 		opacity: 0.8;
 	}
 }
+
+// Main layout notification
+
+.notification {
+	box-shadow: 0 8px 32px 0 rgba(47, 47, 47, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 2px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	position: absolute;
+	bottom: 2rem;
+	left: -300px; /* Start off-screen */
+	animation: slideIn 1s forwards; /* Apply animation */
+	opacity: 1;
+}
+
+@keyframes slideIn {
+	0% {
+		left: -300px; /* Start off-screen */
+	}
+	100% {
+		left: 1rem; /* End position */
+	}
+}
+
+.success {
+	background-color: rgba(0, 128, 0, 0.663);
+	color: white;
+}
+.danger {
+	background-color: rgba(255, 62, 14, 0.498);
+	color: white;
+}

@@ -11,9 +11,10 @@
 				<h2><%= car.price %> por dia</h2>
 				<div class="stars">
 					<p>
-						Rating: <% for (let i = 1; i <= averageRating; i++) { %>
+						(<%=Number(averageRating).toFixed(1)%>) <% for (let i = 1; i <=
+						averageRating; i++) { %>
 						<span class="star">⭐</span>
-						<% } %> (<%=averageRating%>)
+						<% } %>
 					</p>
 				</div>
 				<p>Chasis: <%=car.vim ?? 'No definido'%></p>
@@ -69,9 +70,7 @@
 						action="/cars/<%=car._id%>/reviews/<%=review._id%>?_method=DELETE"
 						method="POST"
 					>
-						<button class="btn text danger">
-							<img src="/imgs/trash.svg" alt="delete icon" />
-						</button>
+						<button class="btn text danger">eliminar</button>
 					</form>
 				</div>
 				<% }) %> <% } else { %>
