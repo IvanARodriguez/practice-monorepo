@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import Review from './Review.js'
 
 const carSchema = Schema({
 	price: { type: Number, required: [true, 'Precio es requerido'] },
@@ -12,6 +13,14 @@ const carSchema = Schema({
 	},
 	photos: [{ type: String }],
 	reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+})
+
+carSchema.post('findOneAndDelete', async (car) => {
+	// Find all reviews related to the Car and delete them
+	if (car.reviews.length) {
+		const res = await Review.deleteMany({ _id: { $in: car.reviews } })
+		console.log(res)
+	}
 })
 
 export default model('Car', carSchema)

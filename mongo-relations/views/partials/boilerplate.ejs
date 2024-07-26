@@ -15,9 +15,6 @@
 	<body>
 		<%-include('./nav.ejs') %>
 		<main><%- body %></main>
-		<%if(message !== ''){ %>
-		<p class="notification success"><%=message%></p>
-		<% } %>
 		<script src="/scripts/main.js" type="text/javascript"></script>
 	</body>
 </html>

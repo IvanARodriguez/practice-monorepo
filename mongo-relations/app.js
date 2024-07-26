@@ -12,7 +12,7 @@ import helmet from 'helmet'
 import methodOverride from 'method-override'
 import flash from 'connect-flash'
 import cookieParser from 'cookie-parser'
-import session from 'express-session'
+import cookieSession from 'cookie-session'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -21,15 +21,6 @@ const DB_URI = process.env.DB_URI ?? 'mongodb://127.0.0.1:27017/RentACar'
 
 const app = express()
 app.use(methodOverride('_method'))
-app.use(cookieParser('secretStringForCookies'))
-app.use(
-	session({
-		secret: 'secretStringForCookies',
-		cookie: { maxAge: 60000 },
-		resave: true,
-		saveUninitialized: true,
-	})
-)
 app.use(flash())
 
 // Configure Custom HTTP Logger
@@ -53,7 +44,7 @@ app.use(
 )
 app.disable('x-powered-by')
 app.use(
-	session({
+	cookieSession({
 		name: 'session',
 		keys: ['key1', 'key2'],
 		cookie: {
