@@ -1,0 +1,4 @@
+brand	model	year	mpgcity	mpghighway
+Toyota	Corolla	2006	35	33
+Honda	Accord	2023	37	35
+Range Rover	Sport	2024	27	25
